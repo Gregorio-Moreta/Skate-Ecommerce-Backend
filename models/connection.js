@@ -3,12 +3,6 @@
 ///////////////////////////
 //  Load Env Variables
 require('dotenv').config()
-//  Import Express
-const express = require('express')
-//  Import Morgan
-const morgan = require('morgan')
-//  Import methodOverride
-const methodOverride = require('method-override')
 //  Import Mongoose
 const mongoose = require('mongoose')
 
@@ -32,11 +26,8 @@ mongoose.connection
 .on('close', () => console.log('Disconencted from Mongoose'))
 .on('error', (error) => console.log(error))
 
+///////////////////////////////////////
+//  Export Connection
+///////////////////////////////////////
 
-
-
-
-
-
-
-
+module.export = mongoose
