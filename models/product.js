@@ -9,7 +9,7 @@ const mongoose = require('./connection')
 //  Pull Schema and model from mongoose
 const { Schema, model } = mongoose;
 
-//  Make user Schema
+//  Make product Schema
 const productSchema = new Schema(
     {
         name: String,
