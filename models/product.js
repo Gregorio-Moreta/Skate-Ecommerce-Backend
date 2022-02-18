@@ -13,7 +13,7 @@ const { Schema, model } = mongoose;
 const productSchema = new Schema(
     {
         name: String,
-        price: int,
+        price: Number,
         image: String,
         description: String,
         tag: String
