@@ -8,6 +8,7 @@ const methodOverride = require('method-override')       //  Import method-overri
 const session = require('express-session')      //  Express sessions cookies
 const MongoStore = require('connect-mongo')     //  Stores the data in mongo so it can't be easily deleted  in heroku temporary storage
 const ProductRouter = require('../controllers/product')
+const bodyParser = require('body-parser')
 
 
 ///////////////////////////////////////
@@ -18,6 +19,7 @@ const middleware = (app) => {
     app.use(methodOverride('_method'))     // Override for PUT and DELETE request from forms
     app.use(express.urlencoded({extended: true}))   // Parse urlencoded request bodies
     app.use(express.static('public'))   // Serve files from public statically
+    app.use(bodyParser.json())
     app.use(session({
         secret: process.env.SECRET, 
         store: MongoStore.create({mongoUrl: process.env.DATABASE_URL}),

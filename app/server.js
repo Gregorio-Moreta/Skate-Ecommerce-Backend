@@ -7,7 +7,7 @@ require('dotenv').config()
 const express = require('express')
 //  Import middleware
 const middleware = require('../utils/middleware')
-// const Product = require('../models/product')
+const Product = require('../models/product')
 
 
 
@@ -22,6 +22,26 @@ middleware(app)
 app.get('/', (req, res) => {
     res.send('app is running correctly')
 })
+
+// Product index route get request for all products
+app.get('/product', async (req, res) => {
+    try {
+        res.json(await Product.find({}))
+    } catch(error) {
+        res.status(400).json({error})
+    }
+})
+
+// Product create route post request for making products
+app.post('/product', async (req, res) => {
+    try {
+        res.json(await Product.create(req.body))
+        console.log(req.body)
+    } catch(error) {
+        res.status(400).json({error})
+    }
+})
+
 
 // app.get('/product', (req, res) => {
 //     res.send('Product')
