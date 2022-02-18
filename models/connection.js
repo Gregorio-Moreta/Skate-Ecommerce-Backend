@@ -14,7 +14,8 @@ const mongoose = require('mongoose')
 const DATABASE_URL = process.env.DATABASE_URL
 const CONFIG = {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
 }
 
 //  Establish Conenction
@@ -22,12 +23,12 @@ mongoose.connect(DATABASE_URL, CONFIG)
 
 //Events for when connection opens/disconnects/errors
 mongoose.connection 
-.on('open', () => console.log('Connected to Mongoose'))
-.on('close', () => console.log('Disconencted from Mongoose'))
+.on('open', () => console.log('Connected to Mongo'))
+.on('close', () => console.log('Disconencted from Mongo'))
 .on('error', (error) => console.log(error))
 
 ///////////////////////////////////////
 //  Export Connection
 ///////////////////////////////////////
 
-module.export = mongoose
+module.exports = mongoose
