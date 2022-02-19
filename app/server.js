@@ -7,7 +7,7 @@ require('dotenv').config()
 const express = require('express')
 //  Import middleware
 const middleware = require('../utils/middleware')
-const Product = require('../models/product')
+// const Product = require('../models/product')
 
 
 
@@ -19,56 +19,56 @@ middleware(app)
 // Routes
 ///////////////////////////
 
-app.get('/', (req, res) => {
-    res.send('app is running correctly')
-})
+// app.get('/', (req, res) => {
+//     res.send('app is running correctly')
+// })
 
-// Product index route GET request for all products
-app.get('/product', async (req, res) => {
-    try {
-        res.json(await Product.find({}))
-    } catch(error) {
-        res.status(400).json({error})
-    }
-})
+// // Product index route GET request for all products
+// app.get('/product', async (req, res) => {
+//     try {
+//         res.json(await Product.find({}))
+//     } catch(error) {
+//         res.status(400).json({error})
+//     }
+// })
 
-// Product create route POST request for making products
-app.post('/product', async (req, res) => {
-    try {
-        res.json(await Product.create(req.body))
-        console.log(req.body)
-    } catch(error) {
-        res.status(400).json({error})
-    }
-})
+// // Product create route POST request for making products
+// app.post('/product', async (req, res) => {
+//     try {
+//         res.json(await Product.create(req.body))
+//         console.log(req.body)
+//     } catch(error) {
+//         res.status(400).json({error})
+//     }
+// })
 
-// Product update Route PUT request for updating products
-app.put('/product/:id', async (req, res) => {
-    try{
-        res.json(
-            await Product.findByIdAndUpdate(req.params.id, req.body, {new:true},
-                console.log(req.params.id),
+// // Product update Route PUT request for updating products
+// app.put('/product/:id', async (req, res) => {
+//     try{
+//         res.json(
+//             await Product.findByIdAndUpdate(req.params.id, req.body, {new:true},
+//                 console.log(req.params.id),
 
-                console.log(req.body)
-            )
-        )
-    } catch(error){
-        res.status(400).json({error})
-        console.log(error)
+//                 console.log(req.body)
+//             )
+//         )
+//     } catch(error){
+//         res.status(400).json({error})
+//         console.log(error)
         
-    }
-})
+//     }
+// })
 
-//  Destroy route delete request to product/id
-app.delete('/product/:id', async (req, res) => {
-    try {
-        res.json(await Product. findByIdAndRemove(req.params.id))
-    } catch (error) {
-        res.status(400).json({error})
-        console.log(error)
+// //  Destroy route delete request to product/id
+// app.delete('/product/:id', async (req, res) => {
+//     try {
+//         res.json(await Product.findByIdAndRemove(req.params.id))
+//     } catch (error) {
+//         res.status(400).json({error})
+//         console.log(error)
 
-    }
-})
+//     }
+// })
 
 
 
