@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
     res.send('app is running correctly')
 })
 
-// Product index route get request for all products
+// Product index route GET request for all products
 app.get('/product', async (req, res) => {
     try {
         res.json(await Product.find({}))
@@ -32,7 +32,7 @@ app.get('/product', async (req, res) => {
     }
 })
 
-// Product create route post request for making products
+// Product create route POST request for making products
 app.post('/product', async (req, res) => {
     try {
         res.json(await Product.create(req.body))
@@ -42,6 +42,22 @@ app.post('/product', async (req, res) => {
     }
 })
 
+// Product update Route PUT request for updating products
+app.put('/product/:id', async (req, res) => {
+    try{
+        res.json(
+            await Product.findByIdAndUpdate(req.params.id, req.body, {new:true},
+                console.log(req.params.id),
+
+                console.log(req.body)
+            )
+        )
+    } catch(error){
+        res.status(400).json({error})
+        console.log(error)
+        
+    }
+})
 
 // app.get('/product', (req, res) => {
 //     res.send('Product')
