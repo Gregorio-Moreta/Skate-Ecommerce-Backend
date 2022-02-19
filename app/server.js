@@ -59,6 +59,24 @@ app.put('/product/:id', async (req, res) => {
     }
 })
 
+//  Destroy route delete request to product/id
+app.delete('/product/:id', async (req, res) => {
+    try {
+        res.json(await Product. findByIdAndRemove(req.params.id))
+    } catch (error) {
+        res.status(400).json({error})
+        console.log(error)
+
+    }
+})
+
+
+
+
+
+
+
+
 // app.get('/product', (req, res) => {
 //     res.send('Product')
 // })
