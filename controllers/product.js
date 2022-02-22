@@ -53,7 +53,7 @@ router.put('/product/:id', async (req, res) => {
     }
 })
 
-//  Destroy route delete request to product/id
+//  Destroy route delete request to product/:id
 router.delete('/product/:id', async (req, res) => {
     try {
         res.json(await Product.findByIdAndRemove(req.params.id))
