@@ -7,7 +7,9 @@ const morgan = require('morgan')        //  Import morgan
 const methodOverride = require('method-override')       //  Import method-override
 const session = require('express-session')      //  Express sessions cookies
 const MongoStore = require('connect-mongo')     //  Stores the data in mongo so it can't be easily deleted  in heroku temporary storage
+const cors = require('cors') // cors headers
 const ProductRouter = require('../controllers/product.js')
+const CartRouter = require('../controllers/cart.js')
 const bodyParser = require('body-parser')
 
 
@@ -18,6 +20,8 @@ const middleware = (app) => {
     app.use(morgan('tiny'))    // Logging
     app.use(methodOverride('_method'))     // Override for PUT and DELETE request from forms
     app.use(express.urlencoded({extended: true}))   // Parse urlencoded request bodies
+    // Prevents cors errors
+    app.use(cors())
     app.use(express.static('public'))   // Serve files from public statically
     app.use(bodyParser.json())
     app.use(session({
@@ -28,6 +32,7 @@ const middleware = (app) => {
     })
     )
     app.use('/', ProductRouter)
+    app.use('/', CartRouter)
 }
 
 module.exports = middleware

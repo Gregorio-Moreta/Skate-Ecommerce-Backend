@@ -12,9 +12,8 @@ const { Schema, model } = mongoose;
 //  Make user Schema
 const CartSchema = new Schema(
     {
-        fk: Product,
-        fk: User,
-        quantity: int
+        Product: String,
+        quantity: Number
     }
 )
 
