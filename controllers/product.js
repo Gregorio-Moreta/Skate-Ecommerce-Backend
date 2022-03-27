@@ -37,7 +37,7 @@ router.post("/product", async (req, res) => {
 });
 
 // Fetch Product by unique Id
-app.get("/playlist/:id/", async (req, res) => {
+router.get("/product/:id/", async (req, res) => {
   const product = await Product.find({ _id: req.params.id });
   res.json(product);
 });
